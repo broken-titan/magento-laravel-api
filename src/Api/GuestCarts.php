@@ -54,6 +54,34 @@ class GuestCarts extends AbstractApi
     }
 
     /**
+     * Estimate the shipping methods for a specified cart.
+     *
+     * @param  string  $cartId
+     * @param  array   $address
+     * @return array
+     */
+    public function estimateShippingMethods($cartId, $address)
+    {
+        return $this->post('/guest-carts/'.$cartId.'/estimate-shipping-methods', [
+            'address' => $address
+        ]);
+    }
+
+    /**
+     * Add shipping information for a specified cart.
+     *
+     * @param  string  $cartId
+     * @param  array   $addressInformation
+     * @return array
+     */
+    public function addShippingInformation($cartId, $addressInformation)
+    {
+        return $this->post('/guest-carts/'.$cartId.'/shipping-information', [
+            'addressInformation' => $addressInformation
+        ]);
+    }
+
+    /**
      * Return quote totals data for a specified cart.
      *
      * @return array
